@@ -9,15 +9,15 @@ jobs:
   include:
     - os: windows
       language: bash
-      install:
-        - choco install mingw
-        - choco install msys2
-        - ridk.cmd exec pacman -S --noconfirm --needed base-devel mingw-w64-x86_64-toolchain
-      script: rake
+      # install:
+        # - choco install mingw
+        # - choco install msys2
+        # - ridk.cmd exec pacman -S --noconfirm --needed base-devel mingw-w64-x86_64-toolchain
+      script: bundle exec rake
     - os: linux
       language: ruby
       rvm: 2.4.2
-      script: rake
+      script: bundle exec rake
       addons:
         apt:
           packages:
@@ -25,7 +25,7 @@ jobs:
     - os: linux
       language: ruby
       rvm: 2.5.3
-      script: rake
+      script: bundle exec rake
       addons:
         apt:
           packages:
@@ -33,7 +33,7 @@ jobs:
     - os: linux
       language: ruby
       rvm: 2.6.5
-      script: rake
+      script: bundle exec rake
       addons:
         apt:
           packages:
@@ -42,7 +42,7 @@ jobs:
       language: ruby
       rvm: ruby-head
       allow_failures: true
-      script: rake
+      script: bundle exec rake
       addons:
         apt:
           packages:
