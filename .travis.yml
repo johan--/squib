@@ -1,5 +1,11 @@
 language: ruby
+os:
+  - linux
+  - osx
+  - windows
+
 sudo: true # need this for libgirepository1.0-dev
+
 addons:
   apt:
     packages:
@@ -7,7 +13,7 @@ addons:
 rvm:
   - 2.4.2
   - 2.5.3
-  - 2.6.3
+  - 2.6.5
   - ruby-head
 before_install:
   - gem update --system
