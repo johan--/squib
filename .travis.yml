@@ -19,13 +19,18 @@ jobs:
       script: rake
     - os: linux
       language: ruby
-      rvm:
-        - 2.4.2
-        - 2.5.3
-        - 2.6.5
-        - ruby-head
-      install:
-        - choco install mingw
-        - choco install msys2
-        - ridk.cmd exec pacman -S --noconfirm --needed base-devel mingw-w64-x86_64-toolchain
+      rvm: 2.4.2
+      script: rake
+    - os: linux
+      language: ruby
+      rvm: 2.5.3
+      script: rake
+    - os: linux
+      language: ruby
+      rvm: 2.6.5
+      script: rake
+    - os: linux
+      language: ruby
+      rvm: ruby-head
+      allow_failures: true
       script: rake
