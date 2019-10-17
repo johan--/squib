@@ -1,8 +1,5 @@
 # sudo: true # need this for libgirepository1.0-dev
-# addons:
-#   apt:
-#     packages:
-#       - libgirepository1.0-dev # for gobject-introspection
+
 
 # before_install:
 #   - gem update --system
@@ -21,16 +18,32 @@ jobs:
       language: ruby
       rvm: 2.4.2
       script: rake
+      addons:
+        apt:
+          packages:
+            - libgirepository1.0-dev # for gobject-introspection
     - os: linux
       language: ruby
       rvm: 2.5.3
       script: rake
+      addons:
+        apt:
+          packages:
+            - libgirepository1.0-dev # for gobject-introspection
     - os: linux
       language: ruby
       rvm: 2.6.5
       script: rake
+      addons:
+        apt:
+          packages:
+            - libgirepository1.0-dev # for gobject-introspection
     - os: linux
       language: ruby
       rvm: ruby-head
       allow_failures: true
       script: rake
+      addons:
+        apt:
+          packages:
+            - libgirepository1.0-dev # for gobject-introspection
