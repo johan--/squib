@@ -1,26 +1,31 @@
-language: ruby
+# sudo: true # need this for libgirepository1.0-dev
+# addons:
+#   apt:
+#     packages:
+#       - libgirepository1.0-dev # for gobject-introspection
 
-sudo: true # need this for libgirepository1.0-dev
-
-addons:
-  apt:
-    packages:
-      - libgirepository1.0-dev # for gobject-introspection
-rvm:
-  - 2.4.2
-  - 2.5.3
-  - 2.6.5
-  - ruby-head
 before_install:
-  - gem update --system
+  - gem update --system -y
   - gem install bundler
-
 
 jobs:
   include:
-    os: windows
-    language: bash
-    install:
-      - choco install mingw
-      - choco install msys2
-      - ridk.cmd exec pacman -S --noconfirm --needed base-devel mingw-w64-x86_64-toolchain
+    - os: windows
+      language: bash
+      install:
+        - choco install mingw
+        - choco install msys2
+        - ridk.cmd exec pacman -S --noconfirm --needed base-devel mingw-w64-x86_64-toolchain
+      script: rake
+    - os: linux
+      language: ruby
+      rvm:
+        - 2.4.2
+        - 2.5.3
+        - 2.6.5
+        - ruby-head
+      install:
+        - choco install mingw
+        - choco install msys2
+        - ridk.cmd exec pacman -S --noconfirm --needed base-devel mingw-w64-x86_64-toolchain
+      script: rake
