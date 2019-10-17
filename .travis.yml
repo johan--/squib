@@ -1,8 +1,4 @@
 language: ruby
-os:
-  - linux
-  - osx
-  - windows
 
 sudo: true # need this for libgirepository1.0-dev
 
@@ -18,6 +14,13 @@ rvm:
 before_install:
   - gem update --system
   - gem install bundler
-matrix:
-  allow_failures:
-    - rvm: ruby-head
+
+
+jobs:
+  include:
+    os: windows
+    language: bash
+    install:
+      - choco install mingw
+      - choco install msys2
+      - ridk.cmd exec pacman -S --noconfirm --needed base-devel mingw-w64-x86_64-toolchain
