@@ -30,7 +30,6 @@ jobs:
       uses: actions/setup-ruby@v1
       with:
         ruby-version: 2.6.x
-    - uses
     - name: Install dependencies
       run: |
         gem install bundler
